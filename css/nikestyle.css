@@ -1,0 +1,280 @@
+@charset "utf-8";
+@import url(font-awesome.min.css);
+@import url('https://fonts.googleapis.com/css?family=Monoton|Play');
+
+/*reset*/
+*{margin: 0; padding:0;}
+a {text-decoration: none; color:inherit;}
+li{list-style: none;}
+
+/*full screen vid*/
+body {
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    background: #121212;
+}
+.vid {
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+}
+.vid video {
+    min-width: 100%;
+    min-height: 100%;
+    width: auto;
+    height: auto;
+}
+
+/*header*/
+header {
+    background-image: linear-gradient(90deg, #edff8a, #96b900);
+    width: 500px;
+    height: 100%;
+    transform: skewX(-35deg);
+    transform-origin: left top; /*중심축을 바꾸는 속성: 기본 center로 설정*/
+}
+/*logo*/
+.logo {
+    position: absolute;
+    width: 200px;
+    top: 20px;
+    left: 20px;
+    cursor: pointer;
+}
+.logo img {
+    width: 100%;
+}
+/*gnb*/
+header {
+    position: relative;
+}
+.gnb {
+/*1 gnb: depth*/
+    position: absolute;
+    top: 150px;
+    right: 0;
+    width: 200px;
+    font-family: 'paly';
+}
+/*1depth*/
+.gnb>li {
+    position: relative;
+    right: 20px;
+}
+.gnb>li b {
+    display: inline-block;
+    transform: skewX(35deg); /*기울기 반대로 줘서 똑바로 세우기*/
+}
+.gnb>li i {
+    margin-right: 5px;
+}
+.gnb>li>a {
+    display: block;
+    width: 100%;
+    line-height: 50px;
+    text-align: right;
+    padding-right: 40px;
+}
+.gnb>li:hover > a,
+.gnb>li:focus > a,
+.gnb>.on>a {
+    background: #121212;
+    color: #eee;
+}
+/*2 depth*/
+ul.gnb ul {
+    position: absolute;
+    left: 0;
+    top: -5px;
+    opacity: 0;
+    transition: all .3s;
+}
+ul.gnb>li:hover ul {
+    left: 210px;
+    opacity: 0.9;
+}
+ul.gnb ul a {
+    display: block;
+    background: #333;
+    color: #eee;
+    width: 150px;
+    text-align: center;
+    font: 15px / 40px 'play' ; /*1: font-size 2: line-height 3:font-family*/
+    border-top: 1px solid #cfff00;
+}
+ul.gnb ul a:hover {
+    background: #cfff00;
+    color: #121212;
+    border-top: 1px solid #cfff00;
+}
+ul.gnb>.on ul {
+    left: 210px;
+    opacity: 0.8;
+}
+
+/*sns*/
+.sns {
+    position: absolute;
+    right: 50px;
+    top: 50px;
+}
+.sns a {
+    display: inline-block;
+    padding: 5px;
+    color: #cfff00;
+    font-size: 25px;
+    opacity: 0.7;
+    transition: all .3s;
+}
+.sns a:hover {
+    opacity: 0.9;
+    transform: translateY(-10px) rotate(-10deg) scale(1.5);
+}
+
+/*mainText*/
+.text {
+    position: absolute;
+    right: 50px;
+    top: 300px;
+}
+.text p:nth-child(1) {
+    font-size: 150px;
+    font-family: Monoton;
+    color: #cfff00;
+    text-shadow: 3px 3px 5px #222;
+    letter-spacing: 3px;
+    line-height: 0;
+}
+.text p:nth-child(1) em {
+    font: italic 50px play;
+    color: #ccc;
+    letter-spacing: -1px;
+}
+.text p:nth-child(2) {
+    color: #ccc;
+    font: 30px play;
+    letter-spacing: -1px;
+}
+.text p:nth-child(2) strong {
+    color: #cfff00;
+    font-size: 35px;
+    text-shadow: 1px 1px 5px #000, 0 0 5px #fff;
+}
+
+/*aside*/
+aside {
+    position: absolute;
+    bottom: 0;
+    right: -400px;
+    width: 700px;
+    height: 100%;
+    background: rgba(0,0,0,0.5);
+    transform: skewX(-35deg);
+    transform-origin: right bottom;
+    transition: all .7s;
+}
+aside:hover {
+    right: 0;
+}
+aside .inner {
+    position: absolute;
+    left: 150px;
+    bottom: 0;
+    height: 100%;
+    width: 400px;
+    background: rgba(0,0,0,0.7);
+    transition: all .7s;
+}
+aside:hover .inner {
+    left: 50px;
+}
+aside .inner .contents {
+    position: absolute;
+    bottom: 50px;
+    left: 50px;
+    width: 300px;
+    overflow: hidden;
+}
+aside .contents p {
+    margin-top: 10px;
+}
+aside .contents p b {
+    display: inline-block;
+    color: #cbcbcb;
+    font-family: play;
+    margin: 0 0 5px 5px;
+    transform: skewX(35deg)
+}
+aside .contents a {
+    display: block;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    opacity: 0.5;
+}
+aside .contents img {
+    width: 100%;
+}
+aside .contents a:hover {
+    opacity: 1;
+}
+/*contents이미지 순차적으로 밀림 효과*/
+aside .contents p {
+    transform: translateX(200px);
+    transition: all .5s;
+}
+aside .contents p:nth-child(1){
+    transition-delay: 0.3s;
+}
+aside .contents p:nth-child(2){
+    transition-delay: 0.2s;
+}
+aside .contents p:nth-child(3){
+    transition-delay: 0.1s;
+}
+aside:hover .contents p {
+    transform: translateX(0);
+}
+
+/*자동재생애니 함수*/
+aside .btn {
+    position: absolute;
+    left: 0;
+    bottom: 50px;
+    width: 200px;
+    height: 50px;
+    transform: skewX(35deg);
+    transition: all .5s;
+}
+aside:hover .btn {
+    opacity: 0;
+    left: 10px;
+}
+aside .btn i {
+    position: absolute;
+    right: 0;
+    top: 0;
+    color: #fff;
+    font-size: 70px;
+}
+@keyframes ani {
+    0% {opacity: 0.9; transform: scale(1); right: 0;}
+    100% {opacity: 0; transform: scale(1.7); right: 150px;}
+}
+.btn i:nth-child(1) {
+    animation: ani linear 1.5s 0s infinite;
+}
+/*animation-name: ani -사용자 임의로 지정
+  animation-time-function: -애니메이션 진행속도 liear(일정한속도)
+  animation-duration: 1.5s -진행되는시간
+  animation-delay: 0s -진연속도
+  animation-interaction-count: infinite(무한반복)/number(지정한 숫자만큼 실행)*/
+
+.btn i:nth-child(2) {
+    animation: ani linear 1.5s 0.5s infinite;
+}
+.btn i:nth-child(3) {
+    animation: ani linear 1.5s 1s infinite;
+}
